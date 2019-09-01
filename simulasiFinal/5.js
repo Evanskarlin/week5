@@ -58,24 +58,24 @@
 function userWeapon(user, weapon) {
   // code here
   var kerja = {
-      swordman : ["knife", "katana"],
-      ninja : ["knife", "kunai", "katana"],
-      samurai : ["knife", "katana"],
-      monk : ["knuckle"]
+      swordman : {knife : "knife", katana : "katana"},
+      ninja : {knife : "knife", kunai : "kunai", katana : "katana"},
+      samurai : {knife : "knife", katana : "katana"},
+      monk : {knuckle : "knuckle"}
   }
   var senjata = {
-    redKnife : ["knife", 100],
-    blackKnife : ["knife", 300],
-    crimsonSword : ["katana", 800],
-    moonLightSword : ["katana", 400],
-    starKunai : ["kunai", 80],
-    huumaShuriken : ["kunai", 340],
-    emptyBracer : ["knuckle", 20],
-    brokenArms : ["knuckle", 40]
+    redKnife : {wep : "knife", att: 100},
+    blackKnife : {wep : "knife", att: 300},
+    crimsonSword : {wep : "katana", att: 800},
+    moonLightSword : {wep : "katana", att: 400},
+    starKunai : {wep : "kunai", att: 80},
+    huumaShuriken : {wep : "kunai", att: 340},
+    emptyBracer : {wep : "knuckle", att: 20},
+    brokenArms : {wep : "knuckle", att: 40}
   }
 
-  if (kerja[user["job"]].indexOf(senjata[weapon][0]) != -1){
-    return user["name"] + " menggunakan senjata " + weapon + " attack menjadi " + (user["attack"] + senjata[weapon][1] - senjata[user["weapon"]][1])
+  if (kerja[user["job"]][senjata[weapon]["wep"]] != undefined){
+    return user["name"] + " menggunakan senjata " + weapon + " attack menjadi " + (user["attack"] + senjata[weapon]["att"] - senjata[user["weapon"]]["att"])
   }
   else{
       return "Invalid weapon"

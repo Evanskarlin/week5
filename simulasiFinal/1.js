@@ -28,34 +28,33 @@ OUTPUT:
 
 
 function sortAndFilterAboveMean(numbers) {
-  for (var i = 0 ; i<numbers.length ; i++){
-    var penampung = 0
     var rata = 0
-    var hasil = []
-    for (var j = 0 ; j<numbers.length ; j++){
-    rata += numbers[i]
-      if (numbers[i] > numbers[j]){
-          penampung = numbers[i]
-          numbers[i] = numbers[j]
-          numbers[j] = penampung
+    for (var i = 0 ; i<numbers.length ; i++){
+      var penampung = 0
+      var hasil = []
+      rata += numbers[i]
+      for (var j = 0 ; j<numbers.length ; j++){
+        if (numbers[i] > numbers[j]){
+            penampung = numbers[i]
+            numbers[i] = numbers[j]
+            numbers[j] = penampung
+        }
+      }
+    }   
+    rata = rata/numbers.length
+    for (var k = 0 ; k<numbers.length ; k++){
+      if (numbers[k] >= rata){
+          hasil.push(numbers[k])
       }
     }
+    return hasil
+  
   }
   
-  rata = rata/numbers.length
-  for (var k = 0 ; k<numbers.length ; k++){
-    if (numbers[k] >= rata){
-        hasil.push(numbers[k])
-    }
-  }
-  return hasil
-
-}
-
-console.log(sortAndFilterAboveMean([2, 3, 5, 5, 6, 7])) // [ 7, 6, 5, 5 ]
-
-console.log(sortAndFilterAboveMean([1, 10, 3, 9, 1, 4, 10])) // [ 10, 10, 9 ]
-
-console.log(sortAndFilterAboveMean([45, 2, 8, 22, 3, 9])) // [ 45, 22 ]
-
-console.log(sortAndFilterAboveMean([3, 5, 2, 6])) // [ 6, 5 ]
+  console.log(sortAndFilterAboveMean([2, 3, 5, 5, 6, 7])) // [ 7, 6, 5, 5 ]
+  
+  console.log(sortAndFilterAboveMean([1, 10, 3, 9, 1, 4, 10])) // [ 10, 10, 9 ]
+  
+  console.log(sortAndFilterAboveMean([45, 2, 8, 22, 3, 9])) // [ 45, 22 ]
+  
+  console.log(sortAndFilterAboveMean([3, 5, 2, 6])) // [ 6, 5 ]
